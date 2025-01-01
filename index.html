@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site Interativo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            text-align: center;
+            overflow: hidden; /* Para evitar barras de rolagem */
+            transition: background 1s; /* Transição suave ao mudar de cor */
+        }
+
+        .container {
+            padding: 50px;
+            position: relative;
+            z-index: 1; /* Para garantir que o conteúdo fique acima do canvas */
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .content {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            border-bottom: 2px solid #fff;
+            padding-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        .code-test-panel {
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-align: left;
+        }
+
+        pre {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+            white-space: pre-wrap; /* Para quebrar linhas */
+            word-wrap: break-word; /* Para quebrar palavras */
+        }
+
+        .happy-new-year {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #FFD700; /* Cor dourada */
+        }
+
+        /* Estilo para o botão "Site Lua" */
+        .site-lua-button {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s, transform 0.3s;
+            z-index: 2; /* Para garantir que o botão fique acima de outros elementos */
+        }
+
+        .site-lua-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Bem-vindo ao Meu Site Interativo</h1>
+    <button onclick="showContent('comoCriar')">Como Criar um Site</button>
+    <button onclick="showContent('executavel')">Executável</button>
+    <button onclick="showContent('criadores')">Criadores</button>
+    <button onclick="toggleCodeTestPanel()">CodeTest</button>
+
+    <div id="comoCriar" class="content">
+        <h2>Como Criar um Site</h2>
+        <p>Para criar um site, você precisa seguir algumas etapas essenciais:</p>
+        <ol>
+            <li><strong>Planejamento:</strong> Defina o objetivo do seu site e seu público-alvo.</li>
+            <li><strong>Escolha de Tecnologias:</strong>
+                <ul>
+                    <li>HTML para estrutura</li>
+                    <li>CSS para estilo</li>
+                    <li>JavaScript para interatividade</li>
+                </ul>
+            </li>
+            <li><strong>Desenvolvimento:</strong>
+                <ul>
+                    <li>Crie as páginas HTML</li>
+                    <li>Adicione estilos com CSS</li>
+                    <li>Implemente funcionalidades com JavaScript</li>
+                </ul>
+            </li>
+            <li><strong>Teste:</strong> Verifique se tudo funciona corretamente em diferentes navegadores.</li>
+            <li><strong>Hospedagem:</strong> Escolha um serviço de hospedagem e publique seu site.</li>
+        </ol>
+    </div>
+
+    <div id="executavel" class="content">
+        <h2>Dicas para Não Cometer Erros no Script</h2>
+        <p>Para garantir que seu código funcione corretamente, siga estas dicas:</p>
+        <ul>
+            <li><strong>Verifique a Sintaxe:</strong> Sempre revise seu código em busca de erros de digitação.</li>
+            <li><strong>Use Comentários:</strong> Documente seu código para facilitar a manutenção.</li>
+            <li><strong>Testes Frequentes:</strong> Teste seu código conforme você avança no desenvolvimento.</li>
+            <li><strong>Ferramentas de Depuração:</strong> Utilize ferramentas como o console do navegador para identificar problemas.</li>
+            <li><strong>Consistência:</strong> Mantenha um estilo de codificação consistente em todo o projeto.</li>
+        </ul>
+    </div>
+
+    <div id="criadores" class="content">
+        <h2 style="color: #FFD700;">Criadores</h2>
+        <h1 style="color: #FF4500;">Isllan</h1>
+        <p>Isllan é um criador apaixonado por tecnologia e desenvolvimento web.</p>
+        <p>Ele adora compartilhar conhecimento e ajudar outros a aprenderem sobre programação!</p>
+    </div>
+
+    <div class="code-test-panel" id="codeTestPanel">
+        <h2>Exemplos de Código para Criar um Site em 2024</h2>
+        <p>Abaixo estão alguns exemplos de código que você pode usar:</p>
+        
+        <h3>HTML Básico</h3>
+        <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Meu Site&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Bem-vindo ao Meu Site!&lt;/h1&gt;
+    &lt;p&gt;Este é um exemplo básico de HTML.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+
+        <h3>CSS Básico</h3>
+        <pre>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #333;
+}
+        </pre>
+
+        <h3>JavaScript Básico</h3>
+        <pre>
+function exibirMensagem() {
+    alert('Olá, bem-vindo ao meu site!');
+}
+        </pre>
+
+        <h3>Exemplo de Evento</h3>
+        <pre>
+&lt;button onclick="exibirMensagem()"&gt;Clique aqui&lt;/button&gt;
+        </pre>
+
+    </div>
+
+    <p class="happy-new-year">Feliz Ano Novo pra vocês!</p>
+</div>
+
+<!-- Botão "Site Lua" -->
+<button class="site-lua-button" onclick="window.location.href='https://snepx.github.io/LuaSite/'">Site Lua</button>
+
+<script>
+    // Função para mostrar o conteúdo
+    function showContent(contentId) {
+        const contents = document.querySelectorAll('.content');
+        contents.forEach(content => {
+            content.style.display = 'none';
+        });
+        
+        document.getElementById(contentId).style.display = 'block';
+    }
+
+    // Função para alternar o painel de exemplos
+    function toggleCodeTestPanel() {
+        const codeTestPanel = document.getElementById('codeTestPanel');
+        codeTestPanel.style.display = codeTestPanel.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Função para mudar a cor de fundo
+    let colors = ["#ff7e5f", "#feb47b", "#ff6a6a", "#6ab0ff", "#a26eff", "#ffcc00"];
+    let index = 0;
+
+    function changeBackgroundColor() {
+        document.body.style.backgroundColor = colors[index];
+        index = (index + 1) % colors.length;
+    }
+
+    setInterval(changeBackgroundColor, 3000); // Muda a cor a cada 3 segundos
+</script>
+
+</body>
+      </html>
